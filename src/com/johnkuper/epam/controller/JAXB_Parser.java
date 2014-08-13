@@ -5,16 +5,10 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.ListIterator;
 
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 import com.johnkuper.epam.model.CategoryType;
 import com.johnkuper.epam.model.ItemType;
@@ -23,31 +17,33 @@ import com.johnkuper.epam.model.SubcategoryType;
 
 public class JAXB_Parser {
 
-	JAXB_Validator jaxbValidator = new JAXB_Validator();
+	XML_Validator xmlValidator = new XML_Validator();
 	private static final String JAXBXMLPATH = "xml/jaxbfiltered.xml";
 	private static final String XMLPATH = "xml/shop.xml";
+	public static final String XSDPATH = "xml/shop.xsd";
 
 	public void StartParsing() {
-		RootType initialXMLFile = XMLToObject(XMLPATH);
-		if (jaxbValidator.ValidationJAXBObject(initialXMLFile)) {
+		if (xmlValidator.XMLValidation(XMLPATH, XSDPATH)) {
 			System.out.println("Initial XML has passed validation.");
 			System.out.println("Starting filtration.");
+			RootType initialXMLFile = XMLToObject(XMLPATH);
 			filterJaxbXMLObject(initialXMLFile);
 			objectToXML(initialXMLFile);
+			checkJaxbResultingXML();
 		}
-
-		checkResultingXML();
 
 	}
 
-	public boolean checkResultingXML() {
-		RootType resultingXMLFile = XMLToObject(JAXBXMLPATH);
-		if (jaxbValidator.ValidationJAXBObject(resultingXMLFile)) {
+	private boolean checkJaxbResultingXML() {
+		if (xmlValidator.XMLValidation(JAXBXMLPATH, XSDPATH)) {
 			System.out.println("The resulting XML has passed validation.");
 			System.out.println("Filtration complete.");
 			return true;
+		} else {
+			System.out.println("The resulting XML validation failed.");
+			System.out.println("Filtration complete with errors.");
+			return false;
 		}
-		return false;
 	}
 
 	private RootType XMLToObject(String xmlpath) {
@@ -72,6 +68,7 @@ public class JAXB_Parser {
 			// Write to File
 			m.marshal(root, new File("xml/jaxbfiltered.xml"));
 		} catch (JAXBException e) {
+			System.out.println("Exception: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}

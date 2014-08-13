@@ -25,19 +25,21 @@ public class Jaxb_Xml_Parsing {
 			case 1:
 				System.out.println("JAXB parsing started.");
 				jaxbParser.StartParsing();
-				break;
+				scanner.close();
+				return;
 			case 2:
 				System.out.println("StAX parsing started.");
 				staxParser.prepareParsing();
-				break;
+				scanner.close();
+				return;
 			case 3:
 				System.out.println("Thank you and good bye.");
-				break;
+				scanner.close();
+				return;
 			default:
 				System.out.println("Please enter correct number");
 			}
 		}
-
 	}
 
-}
+}	
