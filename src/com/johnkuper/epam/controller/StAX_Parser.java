@@ -46,7 +46,7 @@ public class StAX_Parser {
 	public void startStaxParsing(XMLEventReader eventReader,
 			XMLEventWriter eventWriter) throws XMLStreamException {
 
-		if (xmlValidator.StaxXMLValidation(XMLPATH, XSDPATH)) {
+		if (xmlValidator.XMLValidation(XMLPATH, XSDPATH)) {
 			System.out.println("Initial XML has passed validation.");
 			System.out.println("Starting filtration.");
 
@@ -116,7 +116,7 @@ public class StAX_Parser {
 			System.out.println("Filtration abort.");
 
 		}
-		if (xmlValidator.StaxXMLValidation(STAXXMLPATH, XSDPATH)) {
+		if (xmlValidator.XMLValidation(STAXXMLPATH, XSDPATH)) {
 			System.out.println("The resulting XML has passed validation.");
 			System.out.println("Filtration complete.");
 		}

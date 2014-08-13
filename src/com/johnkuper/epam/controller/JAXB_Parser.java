@@ -23,7 +23,7 @@ public class JAXB_Parser {
 	public static final String XSDPATH = "xml/shop.xsd";
 
 	public void StartParsing() {
-		if (xmlValidator.StaxXMLValidation(XMLPATH, XSDPATH)) {
+		if (xmlValidator.XMLValidation(XMLPATH, XSDPATH)) {
 			System.out.println("Initial XML has passed validation.");
 			System.out.println("Starting filtration.");
 			RootType initialXMLFile = XMLToObject(XMLPATH);
@@ -35,7 +35,7 @@ public class JAXB_Parser {
 	}
 
 	private boolean checkJaxbResultingXML() {
-		if (xmlValidator.StaxXMLValidation(JAXBXMLPATH, XSDPATH)) {
+		if (xmlValidator.XMLValidation(JAXBXMLPATH, XSDPATH)) {
 			System.out.println("The resulting XML has passed validation.");
 			System.out.println("Filtration complete.");
 			return true;
