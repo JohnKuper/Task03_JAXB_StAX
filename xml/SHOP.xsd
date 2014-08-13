@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://www.w3schools.com/RedsDevils"
+           elementFormDefault="qualified"
+           xmlns="http://www.w3schools.com/RedsDevils"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!--root element-->
+    <xs:element name="SHOP" type="RootType"/>
+    
+    <!--root complex type-->
+    <xs:complexType name="RootType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="category" type="categoryType" />
+        </xs:sequence>
+    </xs:complexType>
+         
+    <!--category complex type-->     
+    <xs:complexType name="categoryType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="subcategory" type="subcategoryType"   />
+        </xs:sequence> 
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <!--subcategory complex type-->       
+    <xs:complexType name="subcategoryType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="item" type="itemType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+            
+    <!--single item complex type-->
+    <xs:complexType name="itemType">
+        <xs:sequence>
+            <!--manufacturer of product-->
+            <xs:element name="manufacturer" type="xs:string" default="n/a" />
+            
+            <!--model of product-->
+            <xs:element name="model" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[a-zA-Z]{2}[0-9]{3}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <!--date of product manufacture-->
+            <xs:element name="date_of_manufacture"  >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="(0[1-9]|[12][0-9]|3[01])[- \.](0[1-9]|1[012])[- \.](19|20)\d\d" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <!--color validation with #ff0000 #1A3 and etc.  matches-->
+            <xs:element name="color" default="#FFFFFF" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <!--price of goods--> 
+            <xs:element name="price" default="0.0" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <!--amount of goods-->
+            <xs:element name="amount" default="0" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="0" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

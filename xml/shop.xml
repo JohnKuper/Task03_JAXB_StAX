@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SHOP
+    xmlns="http://www.w3schools.com/RedsDevils"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.w3schools.com/RedsDevils SHOP.xsd">
+    <category name="video">
+        <subcategory name="led_tv">
+            <item>
+                <manufacturer>Samsung</manufacturer>
+                <model>SQ456</model>
+                <date_of_manufacture>23-10-2010</date_of_manufacture>
+                <color>#45CC33</color>
+                <price>900.56</price>
+                <amount>0</amount>
+            </item>
+            <item>
+                <manufacturer>Microsoft</manufacturer>
+                <model>HJ896</model>
+                <date_of_manufacture>29-06-2008</date_of_manufacture>
+                <color>#55BB66</color>
+                <price>1900.46</price>
+                <amount>2</amount>
+            </item>
+        </subcategory>
+        <subcategory name="dvd_player">
+            <item>
+                <manufacturer>Hitachi</manufacturer>
+                <model>JA349</model>
+                <date_of_manufacture>04-06-2012</date_of_manufacture>
+                <color>#23AE56</color>
+                <price>500.56</price>
+                <amount>0</amount>
+            </item>
+            <item>
+                <manufacturer>Sven</manufacturer>
+                <model>SV896</model>
+                <date_of_manufacture>29-07-2008</date_of_manufacture>
+                <color>#F2B5C6</color>
+                <price>434.78</price>
+                <amount>22</amount>
+            </item>
+        </subcategory>
+    </category>
+    <category name="audio">
+        <subcategory name="mp3_player">
+            <item>
+                <manufacturer>Apple</manufacturer>
+                <model>AP980</model>
+                <date_of_manufacture>23-11-2014</date_of_manufacture>
+                <color>#334455</color>
+                <price>100.98</price>
+                <amount>0</amount>
+            </item>
+            <item>
+                <manufacturer>Direc</manufacturer>
+                <model>KO156</model>
+                <date_of_manufacture>28-02-2005</date_of_manufacture>
+                <color>#FF4422</color>
+                <price>200</price>
+                <amount>87</amount>
+            </item>
+        </subcategory>
+        
+    </category>
+</SHOP>
