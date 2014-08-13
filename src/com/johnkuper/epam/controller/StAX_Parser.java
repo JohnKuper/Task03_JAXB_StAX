@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLInputFactory;
@@ -20,7 +19,7 @@ public class StAX_Parser {
 	public static final String XMLPATH = "xml/shop.xml";
 	public static final String XSDPATH = "xml/shop.xsd";
 	public static final String STAXXMLPATH = "xml/staxFiltered.xml";
-	StAX_Validator staxValidator = new StAX_Validator();
+	XML_Validator xmlValidator = new XML_Validator();
 
 	private void createXMLReaderWriter() {
 		try {
@@ -47,7 +46,7 @@ public class StAX_Parser {
 	public void startStaxParsing(XMLEventReader eventReader,
 			XMLEventWriter eventWriter) throws XMLStreamException {
 
-		if (staxValidator.StaxXMLValidation(XMLPATH, XSDPATH)) {
+		if (xmlValidator.StaxXMLValidation(XMLPATH, XSDPATH)) {
 			System.out.println("Initial XML has passed validation.");
 			System.out.println("Starting filtration.");
 
@@ -117,7 +116,7 @@ public class StAX_Parser {
 			System.out.println("Filtration abort.");
 
 		}
-		if (staxValidator.StaxXMLValidation(STAXXMLPATH, XSDPATH)) {
+		if (xmlValidator.StaxXMLValidation(STAXXMLPATH, XSDPATH)) {
 			System.out.println("The resulting XML has passed validation.");
 			System.out.println("Filtration complete.");
 		}
