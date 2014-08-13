@@ -18,8 +18,8 @@ public class Jaxb_Xml_Parsing {
 		int input = 0;
 		System.out.println("Please choose a parser for filtering: ");
 		System.out.println("1. JAXB | 2. StAX | 3. Exit");
+		Scanner scanner = new Scanner(System.in);
 		while (input != 3) {
-			Scanner scanner = new Scanner(System.in);
 			input = scanner.nextInt();
 			switch (input) {
 			case 1:
@@ -28,15 +28,11 @@ public class Jaxb_Xml_Parsing {
 				break;
 			case 2:
 				System.out.println("StAX parsing started.");
-				staxParser.StartParsing();
+				staxParser.prepareParsing();
 				break;
 			case 3:
 				System.out.println("Thank you and good bye.");
 				break;
-			case 4:
-				System.out.println("Try to understand git.");
-				break;
-				
 			default:
 				System.out.println("Please enter correct number");
 			}
