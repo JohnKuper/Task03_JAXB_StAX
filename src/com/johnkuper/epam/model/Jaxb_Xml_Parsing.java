@@ -33,6 +33,10 @@ public class Jaxb_Xml_Parsing {
 			case 3:
 				System.out.println("Thank you and good bye.");
 				break;
+			case 4:
+				System.out.println("Try to understand git.");
+				break;
+				
 			default:
 				System.out.println("Please enter correct number");
 			}
